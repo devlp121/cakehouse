@@ -1,3 +1,10 @@
-<p>
-  search-results works!
-</p>
+<mat-form-field class="search-big">
+  <input matInput placeholder="Search" (ngModelChange)="performSearch($event)" ngModel #searchit>
+</mat-form-field>
+<div *ngIf="searchTerm">
+  <mat-toolbar class="highlight">Products</mat-toolbar>
+  <app-products></app-products>
+
+  <mat-toolbar class="highlight">Blog Posts</mat-toolbar>
+  <app-posts></app-posts>
+</div>

@@ -1,0 +1,68 @@
+@import '../../../../global.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.sidenav-container {
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  mat-sidenav-content{
+    background: #303030; 
+  }
+  mat-sidenav{
+    background-color: #9c27b0;
+    color: white;    
+  }
+  span > a {
+    text-decoration: none;
+    color: white;
+  }
+  mat-sidenav-container{
+    height: 100vh;
+  }
+  
+  .fill-remaining-space {
+    flex: 1 1 auto;
+  }  
+  .admin-photo {
+    border-radius: 50%;
+    cursor: pointer;
+    height: 45px;
+    transition: transform .3s ease-out;
+    vertical-align: middle;
+    width: 45px;
+    margin-right: 10px;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+.admin-nav {
+    
+  mat-list-item {
+    
+    font-weight: 300;
+      cursor: pointer;
+      transition: background .2s ease-out;
+
+      &:hover,
+      &.selected {
+          background: gray;
+          outline: 0;
+      }
+
+      .mat-icon {
+          margin-right: 10px;
+      }
+  }
+}
+
+.first-tool-row{
+  position: sticky;
+  background: #9c27b0;
+}
+
+.second-tool-row{
+
+  background: #9c27b0;
+}

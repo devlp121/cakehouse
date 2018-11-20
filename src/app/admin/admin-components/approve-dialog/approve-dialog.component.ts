@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+
 
 @Component({
   selector: 'app-approve-dialog',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApproveDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<any>) { }
 
   ngOnInit() {
   }

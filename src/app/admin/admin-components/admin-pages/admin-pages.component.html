@@ -1,3 +1,37 @@
-<p>
-  admin-pages works!
-</p>
+<div class="container">
+    <div class="button-container">
+        <h2>Pages</h2>
+        <button mat-raised-button routerLink="/admin/add-page">Add a Page</button>
+    </div>
+    <p *ngIf="(pages | async)?.length === 0" class="center">
+        No pages yet
+    </p>
+
+
+    <mat-card class="product example-card" *ngFor="let page of pages | async | sort:['title']" routerLink="/admin/edit-page/{{ page.key }}">
+        <mat-card-header>
+            <mat-card-title><a routerLink="/page/{{page.payload.val().url}}" target="_blank" stop-propagation>{{page.payload.val().title}}</a>
+            </mat-card-title>
+            <mat-card-subtitle>
+
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+                {{page.payload.val().body}}
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button routerLink="/admin/edit-page/{{ page.key }}">
+                Edit
+            </button>
+            <button mat-raised-button (click)="deletePage(page.key)" *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                Delete
+            </button>
+            <mat-slide-toggle ngDefaultControl (change)="onChange($event, page.key)" [(ngModel)]="page.payload.val().published"
+                *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                <span *ngIf="!page.payload.val().published">Publish</span>
+                <span *ngIf="page.payload.val().published">Un-Publish</span>
+            </mat-slide-toggle>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

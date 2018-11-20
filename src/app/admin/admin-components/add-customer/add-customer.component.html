@@ -1,3 +1,20 @@
-<p>
-  add-customer works!
-</p>
+<div class="customer-form">
+    <h2>
+        <span *ngIf="!editMode">Add a</span>
+        <span *ngIf="editMode">Edit </span>
+        <span> Customer</span>
+
+    </h2>
+    <mat-form-field appearance="outline">
+        <mat-label>Customer email</mat-label>
+        <input matInput type="text" [(ngModel)]="newEmail">
+        <mat-icon matPrefix>email</mat-icon>
+        <mat-hint>Lowercase</mat-hint>
+    </mat-form-field>
+
+    <button mat-raised-button (click)="addCustomer(newEmail)" class="block">
+        <span *ngIf="!editMode">Add</span>
+        <span *ngIf="editMode">Save</span>
+        <span> Customer</span>
+    </button>
+</div>

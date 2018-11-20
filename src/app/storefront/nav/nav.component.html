@@ -1,3 +1,23 @@
-<p>
-  nav works!
-</p>
+<nav class="navbar fixed-bottom navbar-dark bg-dark mobile-navigator">
+    <button mat-icon-button>
+        <mat-icon class="d-block mx-auto">home</mat-icon>
+        <span class="d-block">Home</span>
+    </button>
+    <button mat-icon-button>
+        <mat-icon class="d-block mx-auto">search</mat-icon>
+        <span class="d-block">Search</span>
+    </button>
+    <button mat-icon-button (click)="openBottomSheet()">
+        <mat-icon class="d-block mx-auto">shopping_cart</mat-icon>
+        <span class="d-block">Cart</span>
+    </button>
+    <button mat-icon-button>
+        <mat-icon class="d-block mx-auto">event</mat-icon>
+        <span class="d-block">Events</span>
+    </button>
+    <button mat-icon-button>
+        <mat-icon class="d-block mx-auto">menu</mat-icon>
+        <span class="d-block">More</span>
+    </button>
+
+</nav>

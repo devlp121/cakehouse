@@ -1,3 +1,36 @@
-<p>
-  admin-products works!
-</p>
+<div class="container">
+    <div class="button-container">
+        <h2>Products</h2>
+        <button mat-raised-button routerLink="/admin/add-product">Add a Product</button>
+    </div>
+    <p *ngIf="(products | async)?.length === 0" class="center">
+        No products yet
+    </p>
+    <mat-card class="product example-card" *ngFor="let product of products | async" routerLink="/admin/edit-product/{{ product.key }}">
+        <mat-card-header>
+            <mat-card-title routerLink="/product/{{product.payload.val().url}}" target="_blank" stop-propagation>{{product.payload.val().title}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{product.payload.val().price | currency:'USD':symbol }}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+                <button mat-raised-button routerLink="/admin/edit-product/{{ product.key }}">
+                    Edit
+                </button>
+                <button mat-raised-button (click)="deleteProduct(product)" *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                    Delete
+                </button>
+                <mat-slide-toggle ngDefaultControl (change)="onChange($event, product.key)" [(ngModel)]="product.payload.val().published"
+                *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                <span *ngIf="!product.payload.val().published">Publish</span>
+                <span *ngIf="product.payload.val().published">Un-Publish</span>
+            </mat-slide-toggle>
+        </mat-card-actions>
+      
+    </mat-card>
+</div>

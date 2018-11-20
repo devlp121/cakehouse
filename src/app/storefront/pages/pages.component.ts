@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pages',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent implements OnInit {
+  pages: Observable<any[]>;
 
-  constructor() { }
+  constructor(db: AngularFireDatabase) {
+    this.pages = db.list('/pages', ref => ref.orderByChild('title')).valueChanges();
+  }
 
   ngOnInit() {
   }

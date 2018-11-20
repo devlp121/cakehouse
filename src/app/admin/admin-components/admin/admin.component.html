@@ -1,3 +1,59 @@
-<p>
-  admin works!
-</p>
+<div class="container-fluid">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row class="first-tool-row">
+            <span ><a routerLink="/">Rowze Cake House</a> </span>
+            <span class="fill-remaining-space"></span>
+            <img *ngIf="(user | async)?.photoURL" src="{{ (user | async)?.photoURL }}" class="admin-photo">
+            <img *ngIf="!(user | async)?.photoURL" src="../../../../assets/placeholder.jpg" class="admin-photo">
+            <button mat-raised-button (click)="logout()" *ngIf="(user | async)" (click)="logout()">Logout</button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav-container" autosize>
+        <mat-sidenav #sidenav mode="side" opened="true" position="start">
+            <mat-list class="admin-nav">
+                <mat-list-item [ngClass]="{'selected': router.url === '/admin'}" routerLink="/admin">
+                    <mat-icon>dashboard</mat-icon> Dashboard
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/posts')}" routerLink="/admin/posts">
+                    <mat-icon>class</mat-icon> Posts
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/pages')}" routerLink="/admin/pages">
+                    <mat-icon>description</mat-icon> Pages
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/products')}" routerLink="/admin/products">
+                    <mat-icon>shopping_basket</mat-icon> Products
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/product-categories')}" routerLink="/admin/product-categories">
+                    <mat-icon>group_work</mat-icon> Product Categories
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/customers')}" routerLink="/admin/customers"
+                    *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                    <mat-icon>account_circle</mat-icon> Customers
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/orders')}" routerLink="/admin/orders"
+                    *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                    <mat-icon>attach_money</mat-icon> Orders
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/menus')}" routerLink="/admin/menus"
+                    *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                    <mat-icon>menu</mat-icon> Menus
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url === '/admin/theme'}" routerLink="/admin/theme" *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                    <mat-icon>restaurant_menu</mat-icon> Theme
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url === '/admin/approvals'}" routerLink="/admin/approvals">
+                    <mat-icon>check_circle</mat-icon> Approvals
+                </mat-list-item>
+                <mat-list-item [ngClass]="{'selected': router.url.includes('/admin/admins')}" routerLink="/admin/admins"
+                    *ngIf="currentAdmin.role === 'super-admin'">
+                    <mat-icon>assignment_ind</mat-icon> Admins
+                </mat-list-item>
+            </mat-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+
+</div>

@@ -1,3 +1,26 @@
-<p>
-  login works!
-</p>
+<mat-card class="login-card">
+  <mat-form-field appearance="outline">
+    <mat-icon matPrefix>perm_identity</mat-icon>
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="newUser" placeholder="Username">
+    <mat-hint></mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-icon matPrefix>email</mat-icon>
+    <mat-label>Email Address</mat-label>
+    <input matInput [(ngModel)]="newEmail" placeholder="Email">
+    <mat-hint></mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-icon matPrefix>security</mat-icon>
+    <mat-label>Password</mat-label>
+    <input matInput type="password" placeholder="Password" minlength="6" [(ngModel)]="newPassword">
+    <mat-hint></mat-hint>
+  </mat-form-field>
+
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" (click)="loginWithEmail()">Login</button>
+  </mat-card-actions>
+
+
+</mat-card>

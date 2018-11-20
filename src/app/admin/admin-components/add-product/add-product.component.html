@@ -1,3 +1,86 @@
-<p>
-  add-product works!
-</p>
+<div class="product-form">
+  <h2>
+    <span *ngIf="!editMode">Add a</span>
+    <span *ngIf="editMode">Edit</span>
+    Product
+  </h2>
+
+  <mat-toolbar class="highlight small" *ngIf="awaitingApproval" routerLink="/admin/approvals">
+    This product has a change awaiting moderation
+    <div class="action">
+      View Approvals
+    </div>
+  </mat-toolbar>
+
+  <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="newTitle">
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input matInput [(ngModel)]="newPrice">
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Description" [(ngModel)]="newDescription"></textarea>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+ <br>
+  <mat-select placeholder="Product Category" [(ngModel)]="newCategory">
+    <mat-option value="">No category</mat-option>
+    <mat-option *ngFor="let category of categories | async" [value]="category.key">{{ category.payload.val().name }}</mat-option>
+  </mat-select>
+<br>
+<mat-form-field appearance="outline">
+    <mat-label>Weight</mat-label>
+    <input matInput placeholder="" [(ngModel)]="newWeight">
+    <mat-hint>Hint</mat-hint>
+</mat-form-field>
+
+  <button mat-raised-button class="mat-upload-button" onclick="document.getElementById('uploadImage').click()">
+    <span *ngIf="!newThumbnail">Upload</span>
+    <span *ngIf="newThumbnail">Change</span>
+    Featured Image
+  </button>
+  <input type="file" id="uploadImage" name="thumbnail" class="native-upload" (change)="handleFiles($event)" accept="image/*">
+  <img [src]="newThumbnail" *ngIf="newThumbnail" class="thumbnail">
+  <div class="no-image" *ngIf="!newThumbnail">No image chosen</div>
+  <div (click)="deleteImage()" *ngIf="newThumbnail" class="delete-image">Delete Image</div>
+
+
+
+  <mat-slide-toggle ngDefaultControl [(ngModel)]="newPublished">
+    <span *ngIf="!newPublished">Publish</span>
+    <span *ngIf="newPublished">Un-Publish</span>
+  </mat-slide-toggle>
+
+  <button mat-raised-button (click)="approveItem(newTitle, newPrice, newCategory, newWeight, newDescription, newPublished)"
+    class="submit" *ngIf="router.url.includes('approval') && (currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+    <span>Approve</span>
+  </button>
+
+  <button mat-raised-button (click)="submitForModeration(newTitle, newPrice, newCategory, newWeight, newDescription, newPublished)"
+    class="submit" *ngIf="router.url.includes('approval') && entityObject && ((currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin') || currentAdmin.uid === entityObject.updatedBy)">
+    Save Draft
+  </button>
+
+  <button mat-raised-button (click)="deleteItem($event)" class="submit" *ngIf="router.url.includes('approval') && entityObject && ((currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin') || currentAdmin.uid === entityObject.updatedBy)">
+    Delete Draft
+  </button>
+
+  <button mat-raised-button (click)="submitForModeration(newTitle, newPrice, newCategory, newWeight, newDescription, newPublished)"
+    class="submit" *ngIf="!router.url.includes('approval')">
+    <span>Submit for Moderation</span>
+  </button>
+
+  <button mat-raised-button (click)="addProduct(newTitle, newPrice, newCategory, newWeight, newDescription, newPublished, false)"
+    class="submit" *ngIf="!router.url.includes('approval') && (currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+    <span *ngIf="!editMode">Add </span>
+    <span *ngIf="editMode">Save </span>
+    <span>Product</span>
+  </button>
+</div>

@@ -1,3 +1,45 @@
-<p>
-  product-categories works!
-</p>
+<div class="container-fluid sticky-top web-navigator themeheader">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link " routerLink="/">Rowze Cake House</a>
+        </li>
+    </ul>
+</div>
+
+<div class="card masthead">
+    <div class="container blockquote-container my-auto">
+        <blockquote>
+            Experience Art, Food Made with Love <br> <span>for the Soul</span>
+        </blockquote>
+    </div>
+</div>
+<div class="container-fluid" class="row">
+    <section *ngFor="let category of categories | async" class="col-8">
+        <app-product-category [categoryInput]="category" *ngIf="category.products" class="categories  "></app-product-category>
+
+    </section>
+        <mat-card class="example-card col-3">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>Shiba Inu</mat-card-title>
+              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                bred for hunting.
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+          
+</div>
+
+<div *ngIf="categories | async">
+    <button mat-button routerLink="/products">View All Products</button>
+</div>

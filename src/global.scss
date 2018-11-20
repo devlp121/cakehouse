@@ -1,0 +1,49 @@
+.header-description{
+    color: #424242;
+    font: 400 32px/40px Google Sans,sans-serif;
+    letter-spacing: 0;
+}
+.description{
+    color: #757575;
+    font: 18px/24px Roboto,sans-serif;
+}
+// colors
+$color-main: rgba(1, 0, 43, 0.774);
+$color-white: #FFF;
+$color-grey: #777;
+$color-grey-dark: #333;
+$color-grey-light: #EEE;
+$color-black: rgba(0,0,0,.87);
+$color-red: #FF0000;
+$color-green: #009900;
+$color-blue: rgb(0, 0, 97);
+$color-lightblue: lightblue;
+
+
+// screen size
+$screen-sm: 750px;
+$screen-md: 960px;
+
+// transitions
+%transition {
+    transition: .3s ease-out;
+}
+
+// mixins
+@mixin mobile {
+    @media screen and (max-width: #{$screen-sm}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: #{$screen-sm}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: #{$screen-md}) {
+        @content;
+    }
+}

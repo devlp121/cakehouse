@@ -1,0 +1,11 @@
+  <mat-nav-list>
+    <a mat-list-item *ngFor="let item of cartArray" >
+      <span mat-line>{{item.title}}</span>
+      <span mat-line>{{item.price | currency:'USD':code}}</span>
+      <mat-form-field mat-line>
+        <input matInput type="number" min="1" [(ngModel)]="item.quantity" (change)="updateCart(item)" [disabled]="review">
+      </mat-form-field>
+      <span mat-line>{{item.total | currency:'USD':symbol}}</span>
+      <span mat-line (click)="removeItem(item)">Remove</span>
+    </a>
+  </mat-nav-list>

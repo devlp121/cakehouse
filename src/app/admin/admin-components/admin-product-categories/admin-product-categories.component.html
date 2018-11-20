@@ -1,3 +1,31 @@
-<p>
-  admin-product-categories works!
-</p>
+<div class="container">
+    <div class="button-container">
+        <h2>Product Categories</h2>
+        <button mat-raised-button routerLink="/admin/add-product-category">Add a Category</button>
+    </div>
+    <p *ngIf="(categories | async)?.length === 0" class="center">
+        No categories yet
+    </p>
+ 
+
+    <mat-card class="product example-card" *ngFor="let category of categories | async" routerLink="/admin/edit-product-category/{{ category.key }}">
+        <mat-card-header>
+            <mat-card-title routerLink="/category/{{ category.payload.val().slug }}" target="_blank" stop-propagation>
+                {{category.payload.val().name}}
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+                <button mat-raised-button routerLink="/admin/edit-product-category/{{ category.key }}">
+                    Edit
+                </button>
+                <button mat-raised-button (click)="deleteCategory(category)" *ngIf="(currentAdmin.role === 'super-admin' || currentAdmin.role === 'admin')">
+                    Delete
+                </button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>

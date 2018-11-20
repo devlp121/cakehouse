@@ -1,3 +1,35 @@
-<p>
-  admin-admins works!
-</p>
+<div class="button-container">
+    <h2>Admins</h2>
+    <button mat-raised-button routerLink="/admin/add-admin">Add an Admin</button>
+</div>
+
+<span *ngFor="let admin of admins | async">
+    <mat-card class="admin" *ngIf="admin.payload.val().active || (!admin.payload.val().active && countAdmin(admin.payload.val().email) === 1)">
+        <mat-card-header routerLink="/admin/edit-admin/{{admin.key}}">
+            <div mat-card-avatar class="example-header-image" *ngIf="admin.payload.val().photoURL" style="background-image: url('{{ admin.payload.val().photoURL }}');">
+            </div>
+            <div mat-card-avatar class="example-header-image" *ngIf="!admin.payload.val().photoURL" style="background-image: url('../../../assets/placeholder.jpg');">
+            </div>
+            <mat-card-title>
+                {{admin.payload.val().email}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                <span *ngIf="admin.payload.val().uid" class="active-user">active</span>
+                <span *ngIf="!admin.payload.val().uid" class="inactive-user">inactive</span>
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                {{ admin.payload.val().role }}
+
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button routerLink="/admin/edit-admin/{{admin.key}}">
+                Edit
+            </button>
+            <button mat-raised-button (click)="deleteAdmin($event, admin.key)">Delete</button>
+        </mat-card-actions>
+
+    </mat-card>
+</span>
