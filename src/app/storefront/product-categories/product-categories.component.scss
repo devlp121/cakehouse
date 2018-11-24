@@ -1,48 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Calligraffitti');
 
-div > button {
-    margin: 30px auto;
-    text-align: center;
-    width: 100%;
-}
-
-@media (min-width: 576px){
-    .mobile-navigator{
-display: none;
-    }
-}
-
-@media (max-width:576px){
-    .web-navigator{
-        display: none;
-    }
-}
-
-mat-icon{
-    align-content : center;
-}
-button{
-    margin-bottom: 10px;
-}
-
-.textdesc{
-    font-size: 15px;
-    line-height: 24px;
-    color: #757575;
-    padding-bottom: 40px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 30px;    
-}
-.brandsection{
-    height: 500px;
-}
-.brandsection>img{
-    margin-bottom: 25px;
-}
-p.card-text{
-    font-weight:3000;
-    text-align: center;
+.vendorheader{
+    font-weight: 100;
+    margin-top: 30px;
 }
 a.nav-link{
     color: white;
@@ -64,13 +24,16 @@ blockquote{
     font-weight: 100;
     color: white;
 }
-.example-card {
+.post-card {
     max-width: 300px;
     margin-top: 0; 
+    margin-right: 0;
   }
   
   .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
-  
+  .post-image{
+      background-size: cover;
+  }

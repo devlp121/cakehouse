@@ -1,33 +1,29 @@
-
 <div class="container" [ngClass]="{ 'category': router.url.includes('category'), 'categories': !router.url.includes('category') }">
-  <h3><a routerLink="/category/{{ categoryObject.slug }}">{{ categoryObject.name }}</a></h3>
-  <section class="grid" *ngIf="categoryProducts">
-    <span class="grid-tile scrolling-wrapper" *ngFor="let product of categoryProducts">
-      <div *ngIf="product.published" itemscope itemtype="http://schema.org/Product">
-        <mat-card routerLink="/product/{{ product.url }}" class="product card">
-          <img [src]="getProductImage(product)" itemprop="image" alt="{{product.title}}">
-          <div class="product-content">
-            <h3>
-              <a routerLink="/product/{{ product.url }}" itemprop="name">
-                {{ product.title }}
-              </a>
-            </h3>
-            <meta itemprop="priceCurrency" content="USD" />
-            <div class="price" itemprop="price">
-              {{ product.price | currency:'USD': code }}
-            </div>
+
+  <h1 class="vendorheader" id="menu" style="text-align: center;" routerLink="/category/{{ categoryObject.slug }}">{{ categoryObject.name }}</h1>
+  <div class="mdc-card container vendorcard" >
+    <div class="my-auto scrolling-wrapper">
+
+      <div class="mdc-card pizzacard  prodcard"  *ngFor="let product of categoryProducts | sort:['weight']" [ngStyle]="{'background-image': 'url(' + getProductImage(product) + ')'}">
+        <div class="mdc-card__media mdc-card__media--square">
+          <div class="mdc-card__media-content" routerLink="/product/{{ product.url }}" itemprop="name">
+            {{ product.title }}</div>
+        </div>
+        <div class="mdc-card__actions">
+          <div class="mdc-card__action-buttons">
+            <button class="mdc-button mdc-card__action mdc-card__action--button  mdc-button--raised" >Add to cart</button>
           </div>
-        </mat-card>
+
+        </div>
       </div>
-    </span>
-    <div class="grid-tile button-container">
-      <span class="see-more">
-        <button mat-raised-button routerLink="/category/{{ categoryObject.slug }}">See more {{ categoryObject.name }}</button>
-      </span>
+
+
+
     </div>
-    
-  </section>
-</div>
-<div *ngIf="(products | async) && router.url.includes('category')" class="bottom-cta">
-  <button mat-button routerLink="/">View All Categories</button>
+
+
+  </div>
+
+
+
 </div>

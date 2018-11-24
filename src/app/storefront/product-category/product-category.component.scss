@@ -1,119 +1,82 @@
-@import '../../../global.scss';
+.vendorheader{
+    font-weight: 100;
+    margin-top: 30px;
+}
+  .pizzacard{
+      background-image: url("../../../assets/part/pizza.jpeg");
+      background-size: cover;
+   }
+   .ribcard{
+       background-image: url("../../../assets/part/ribs.jpg");
+       background-size: cover;
+   }
+   .burgercard{
+    background-image: url("../../../assets/part/PhillyCheesesteakBurger.png");
+    background-size: cover;
+}
+.tacoscard{
+    background-image: url("../../../assets/part/beef-tacos.jpg");
+    background-size: cover;
+}
+.tatocard{
+    background-image: url("../../../assets/part/potato-tater-tots.jpg");
+    background-size: cover;
+}
+.fdipcard{
+    background-image: url("../../../assets/part/famous-french-dip.jpg");
+    background-size: cover;
+}
+.pastacard{
+    background-image: url("../../../assets/part/pesto-chicken-pasta.jpg");
+    background-size: cover;
 
-h3 {
-    margin-left: .7%;
+}
+
+.mdc-card__media-content{
+    color: rgba(17, 13, 13, 0.952);
+    font-size: 30px;
+    font-weight: bold;
     text-align: center;
-
-    @include tablet {
-        text-align: left;
-    }
+    outline-color: white;
+}
+.vendorcard{
+    height: 400px;
+     width: 100%;
+}
+.headergraphics{
+    background-image: url("../../../assets/part/pizzamast.jpeg");
+    background-size: cover;
+    height: 600px;
+    margin-bottom: 50px;
 }
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-
-    .grid-tile {
-        height: 300px;
-        width: 100%;
-
-        @include tablet {
-            width: 50%;
-        }
-
-        @include desktop {
-            width: 25%;
-        }
-    }
-}
-
-.product,
-.see-more {
-    cursor: pointer;
-    height: 235px;
-    margin: 0 auto;
-    width: auto;
-
-    @include tablet {
-        width: 80%;
-    }
-
-    .price {
-        color: $color-grey;
-        font-size: 0.8em;
-    }
-
-    img {
-        display: block;
-        height: 155px;
-        margin: 0 auto;
-        max-height: 155px;
-        max-width: 100%;
-        object-fit: cover;
-    }
-
-    .product-content {
-        display: block;
-    }
-}
-
-.grid .button-container {
-    box-sizing: border-box;
-    display: inline-block;
-    height: 70px;
-    margin: 0 auto;
-    padding-top: 30px;
-    text-align: center;
-
-    @include tablet {
-        height: 300px;
-        padding-top: 130px;
-    }
-}
-
-.categories {
-    padding: 30px 30px 0 30px;
-}
-
-.categories .grid span {
-    display: none;
-}
-
-.categories .grid span:nth-of-type(1),
-.categories .grid span:nth-of-type(2),
-.categories .grid span:nth-of-type(3) {
-    display: block;
-}
-
-.categories .grid span:nth-of-type(1) + .button-container,
-.categories .grid span:nth-of-type(2) + .button-container {
-    display: none;
-}
-
-.category .button-container {
-    display: none;
-}
-
-.see-more:not([class*=mat-elevation-z]) {
-    cursor: default;
-}
-
-.bottom-cta {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-a{
-    text-decoration: none;
+blockquote{
     color: white;
+    font-size: 45px;
+    font-weight: 100;
+    padding-left: 90px;
+}
+.mdc-top-app-bar{
+    background-color: brown;
 }
 
 .scrolling-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  .card {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.prodcard {
     flex: 0 0 auto;
-  }
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 200px;
+}
+
+::-webkit-scrollbar {
+      display: none;
+    }
+
+.mdc-card__actions{
+    margin: auto;
 }
