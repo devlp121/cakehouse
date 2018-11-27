@@ -1,29 +1,21 @@
 <div class="container" [ngClass]="{ 'category': router.url.includes('category'), 'categories': !router.url.includes('category') }">
-
-  <h1 class="vendorheader" id="menu" style="text-align: center;" routerLink="/category/{{ categoryObject.slug }}">{{ categoryObject.name }}</h1>
-  <div class="mdc-card container vendorcard" >
+  <h1 class="vendorheader" id="menu" style="text-align: center;" routerLink="/category/{{ categoryObject.slug }}">{{
+    categoryObject.name }}</h1>
+  <div class="mdc-card container vendorcard">
     <div class="my-auto scrolling-wrapper">
 
-      <div class="mdc-card pizzacard  prodcard"  *ngFor="let product of categoryProducts | sort:['weight']" [ngStyle]="{'background-image': 'url(' + getProductImage(product) + ')'}">
+      <div class="mdc-card prodcard" *ngFor="let product of categoryProducts | sort:['weight']" [ngStyle]="{'background-image': 'url(' + getProductImage(product) + ')'}">
         <div class="mdc-card__media mdc-card__media--square">
           <div class="mdc-card__media-content" routerLink="/product/{{ product.url }}" itemprop="name">
             {{ product.title }}</div>
         </div>
         <div class="mdc-card__actions">
           <div class="mdc-card__action-buttons">
-            <button class="mdc-button mdc-card__action mdc-card__action--button  mdc-button--raised" >Add to cart</button>
+            <button class="mdc-button mdc-card__action mdc-card__action--button  mdc-button--raised">
+              Add to cart</button>
           </div>
-
         </div>
       </div>
-
-
-
     </div>
-
-
   </div>
-
-
-
 </div>

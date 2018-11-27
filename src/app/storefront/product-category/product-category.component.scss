@@ -2,35 +2,6 @@
     font-weight: 100;
     margin-top: 30px;
 }
-  .pizzacard{
-      background-image: url("../../../assets/part/pizza.jpeg");
-      background-size: cover;
-   }
-   .ribcard{
-       background-image: url("../../../assets/part/ribs.jpg");
-       background-size: cover;
-   }
-   .burgercard{
-    background-image: url("../../../assets/part/PhillyCheesesteakBurger.png");
-    background-size: cover;
-}
-.tacoscard{
-    background-image: url("../../../assets/part/beef-tacos.jpg");
-    background-size: cover;
-}
-.tatocard{
-    background-image: url("../../../assets/part/potato-tater-tots.jpg");
-    background-size: cover;
-}
-.fdipcard{
-    background-image: url("../../../assets/part/famous-french-dip.jpg");
-    background-size: cover;
-}
-.pastacard{
-    background-image: url("../../../assets/part/pesto-chicken-pasta.jpg");
-    background-size: cover;
-
-}
 
 .mdc-card__media-content{
     color: rgba(17, 13, 13, 0.952);
@@ -71,6 +42,7 @@ blockquote{
     margin-left: 20px;
     margin-right: 20px;
     width: 200px;
+    background-size: cover;
 }
 
 ::-webkit-scrollbar {

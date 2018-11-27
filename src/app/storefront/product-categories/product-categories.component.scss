@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Calligraffitti');
 
-.vendorheader{
-    font-weight: 100;
-    margin-top: 30px;
-}
-a.nav-link{
-    color: white;
-    font-weight: 600;
-}
+
 .masthead{
     height: 450px;
     background-image: url("../../../assets/mck.jpg");
@@ -17,6 +10,7 @@ a.nav-link{
     height: 60px;
     font-size: 35px;
     font-family: 'Calligraffitti', cursive;
+    color: rgba(83, 0, 0, 0.828);
 
 }
 blockquote{
@@ -31,7 +25,6 @@ blockquote{
   }
   
   .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
   .post-image{

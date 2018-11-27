@@ -5,12 +5,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyDa-owIThn9NpAPrwDX_ibxVu4EE6YTf9o",
-    authDomain: "onl-shop.firebaseapp.com",
-    databaseURL: "https://onl-shop.firebaseio.com",
-    projectId: "onl-shop",
-    storageBucket: "onl-shop.appspot.com",
-    messagingSenderId: "610420560403"
+    apiKey: "AIzaSyAsVdlx4A9iTynKabuTbtmAra3vo5EH1hI",
+    authDomain: "cakehouse-aff10.firebaseapp.com",
+    databaseURL: "https://cakehouse-aff10.firebaseio.com",
+    projectId: "cakehouse-aff10",
+    storageBucket: "cakehouse-aff10.appspot.com",
+    messagingSenderId: "916823670170"
   }
 };
 
