@@ -1,23 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Calligraffitti');
+@import '../../../global.scss';
 
 
 .masthead{
     height: 450px;
-    background-image: url("../../../assets/mck.jpg");
-    background-size: cover;
+    background-image: url("../../../assets/ck.jpg") ;
+    background-size:   center / cover;
 }
 .themeheader{
-    height: 60px;
     font-size: 35px;
     font-family: 'Calligraffitti', cursive;
-    color: rgba(83, 0, 0, 0.828);
-
 }
-blockquote{
-    font-size: 38px;
-    font-weight: 100;
+.web-navigator{
     color: white;
 }
+
 .post-card {
     max-width: 300px;
     margin-top: 0; 
@@ -30,3 +27,9 @@ blockquote{
   .post-image{
       background-size: cover;
   }
+
+ .quote-container{
+     font-size: 30px;
+     font-weight: 200px;
+     max-width: 300px;
+ }

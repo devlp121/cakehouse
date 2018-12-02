@@ -1,58 +1,30 @@
 <div class="container" *ngIf="product" itemscope itemtype="http://schema.org/Product">
-  <div class="product-left">
+
+</div>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp mx-auto">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text mx-auto" itemprop="name">{{product.title}}</h2>
+  </div>
+  <div class="mdl-card__media">
     <img [src]="product.thumbnail" *ngIf="product.thumbnail" class="featured-image" alt="{{product.title}}" itemprop="image">
-    <img src="../../../assets/placeholder.jpg" *ngIf="!product.thumbnail" class="featured-image" alt="{{product.title}}"
+    <img src="../../../assets/placeholder.jpg" *ngIf="!product.thumbnail" class="featured-image" alt="{{product.title}} "
       itemprop="image">
   </div>
-  <div class="product-right">
-    <h2 itemprop="name">{{product.title}}</h2>
-    <meta itemprop="priceCurrency" content="USD" />
-    <p itemprop="price">{{product.price | currency:'USD':code}}</p>
-    <p [innerHTML]="product.description | safeHtml" itemprop="description"></p>
-    <div class="quantity-label">Qty</div>
-    <mat-form-field class="quantity">
-      <input matInput type="number" min="1" [(ngModel)]="product.quantity">
-    </mat-form-field>
-    <button mat-raised-button (click)="addToCart(product)">
-      <span *ngIf="!globalCart || !globalCart[product.entityKey]">Add to</span>
-      <span *ngIf="globalCart && globalCart[product.entityKey]">Update</span>
-      Cart
-    </button>
-  </div>
-</div>
-
-<div [innerHtml]="jsonLDString" class="structured-data"></div>
-
-<!-- Wide card with share menu button -->
-<style>
-  .demo-card-wide.mdl-card {
-    width: 576px;
-  }
-
-  .demo-card-wide>.mdl-card__title {
-    color: black;
-    font-size: 30px;
-    height: 476px;
-  }
-
-  .demo-card-wide>.mdl-card__menu {
-    color: #fff;
-  }
-</style>
-
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title" style="text-align:center;" [ngStyle]="{'background': 'url(' + product.thumbnail + ')'}">
-    <h2 class="mdl-card__title-text" >{{product.title}}</h2>
-  </div>
   <div class="mdl-card__supporting-text">
-      <span class="mdl-chip mdl-chip--contact">
-          <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white"></span>
-          <span class="mdl-chip__text">{{product.price | currency:'USD':code}}</span>
-      </span>.
+    <meta itemprop="priceCurrency" content="USD" />
+
+    <span class="mdl-chip">
+      <span class="mdl-chip__text" itemprop="price"> {{product.price | currency: 'KES': 'code'}}</span>
+    </span>
+    <br>
+    <p [innerHTML]="product.description | safeHtml" itemprop="description"></p>
   </div>
   <div class="mdl-card__actions mdl-card--border">
-    <button class="mdc-button mdc-card__action mdc-card__action--button  mdc-button--raised">
-      Add to cart</button>
+    <button class="mdc-button mdc-card__action mdc-card__action--button  mdc-button--raised" (click)="addToCart(product)">
+      <span *ngIf="!globalCart || !globalCart[product.entityKey]">Add to</span>
+      <span *ngIf="globalCart && globalCart[product.entityKey]">Update</span>
+      <span> Cart</span>
+    </button>
   </div>
   <div class="mdl-card__menu">
     <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
@@ -60,3 +32,4 @@
     </button>
   </div>
 </div>
+<div [innerHtml]="jsonLDString" class="structured-data"></div>

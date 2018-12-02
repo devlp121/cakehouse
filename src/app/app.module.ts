@@ -120,7 +120,7 @@ import { CartSheetComponent } from "./storefront/cart-sheet/cart-sheet.component
     MatSnackBarModule,
     MatStepperModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase, ),
+    AngularFireModule.initializeApp(environment.firebase, 'cakehouse'),
     AdminRoutingModule,
     AdminModule,
     SharedModule,
